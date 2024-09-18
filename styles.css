@@ -1,0 +1,177 @@
+/* General Styling */
+body, html {
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+    background-color: #111; /* Dark background */
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #ffd700; /* Gold color */
+}
+
+a:hover {
+    color: #ffffff; /* White hover for contrast */
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffd700;
+    font-weight: 600;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: white;
+}
+
+
+.hero {
+    height: 100vh;
+    background-color: #0000004a;
+    background-blend-mode:multiply;
+    background-image: url('IMG_5086.jpg');
+    background-size:cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-attachment: fixed; 
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #ffd700;
+}
+
+.btn-outline-gold {
+    border-color: #ffd700;
+    color: #ffd700;
+}
+
+.btn-outline-gold:hover {
+    background-color: #ffd700;
+    color: #111;
+}
+
+/* Skills Section */
+.skills-section {
+    padding: 5rem 0;
+    background-color: #1a1a1a;
+}
+
+.skills-section h2 {
+    color: #ffd700;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.skill-bar {
+    margin-bottom: 1.5rem;
+}
+
+.progress-bar {
+    background-color: #ffd700;
+}
+
+/* Projects Section */
+.projects-section {
+    background-color: #eaeaea;
+    padding: 5rem 0;
+}
+
+.project-card {
+    background-color: white;
+    border: none;
+    transition: transform 0.3s ease;
+}
+
+.project-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.project-card:hover {
+    transform: scale(1.05);
+}
+
+.project-info {
+    padding: 1rem;
+    background-color: #111;
+    color: white;
+}
+
+.project-info h4 {
+    color: #ffd700;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 5rem 0;
+    background-color: #111;
+}
+
+.contact-section h2 {
+    color: #ffd700;
+}
+
+.contact-section .form-control {
+    background-color: #222;
+    color: white;
+    border: 2px solid #ffd700;
+}
+
+.contact-section .form-control:focus {
+    border-color: #ffffff;
+    box-shadow: none;
+}
+
+.contact-section .btn-outline-gold {
+    border-color: #ffd700;
+    color: #ffd700;
+}
+
+.contact-section .btn-outline-gold:hover {
+    background-color: #ffd700;
+    color: #111;
+}
+
+/* Footer */
+footer {
+    background-color: #000;
+    color: white;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+footer a {
+    color: #ffd700;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hero {
+        padding: 2rem 1rem;
+        text-align: center;
+    }
+
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .display-3 {
+        font-size: 2rem;
+    }
+
+    .projects-section {
+        padding: 3rem 1rem;
+    }
+}

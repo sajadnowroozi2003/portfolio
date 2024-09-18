@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sajad Nowroozi - Portfolio</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand font-weight-bold text-gold" href="#">Sajad Nowroozi</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link text-gold" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-gold" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link text-gold" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link text-gold" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero bg-gradient-dark text-white d-flex align-items-center justify-content-center">
+        <div class="container text-center">
+            <img src="profile.png" class="profile-img rounded-circle border border-gold" alt="Sajad Nowroozi">
+            <h1 class="display-3 font-weight-bold mt-4">Sajad Nowroozi</h1>
+            <p class="lead">Mobile App Developer | Web Developer | Software Engineer</p>
+            <a href="#projects" class="btn btn-outline-gold btn-lg mt-3">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section py-5 bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center text-gold mb-5">Skills</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="skill-bar mb-4">
+                        <h4>Flutter & Dart</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-gold" role="progressbar" style="width: 90%">90%</div>
+                        </div>
+                    </div>
+                    <div class="skill-bar mb-4">
+                        <h4>Frontend Development (HTML/CSS/JS)</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-gold" role="progressbar" style="width: 85%">85%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill-bar mb-4">
+                        <h4>UI/UX Design (Figma)</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-gold" role="progressbar" style="width: 75%">75%</div>
+                        </div>
+                    </div>
+                    <div class="skill-bar mb-4">
+                        <h4>Backend (Firebase)</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-gold" role="progressbar" style="width: 80%">80%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center text-dark mb-5">Projects</h2>
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card shadow rounded">
+                        <img src="project1.png" class="img-fluid rounded-top" alt="Project 1">
+                        <div class="project-info p-3 bg-dark text-white">
+                            <h4 class="text-gold">Top Ten Afghan Singer App</h4>
+                            <p>Offline music app using Flutter.</p>
+                            <button type="button" class="btn btn-outline-gold" data-toggle="modal" data-target="#project1Modal">Details</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project Modal -->
+                <div class="modal fade" id="project1Modal" tabindex="-1" role="dialog" aria-labelledby="project1ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-dark text-white">
+                                <h5 class="modal-title" id="project1ModalLabel">Top Ten Afghan Singer App</h5>
+                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body bg-light">
+                                <p>This app allows users to browse Afghan singers, view details, and play offline music.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Repeat similar structure for more projects -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section py-5 bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center text-gold mb-5">Contact Me</h2>
+            <form action="submit.php" method="post">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" class="form-control border-gold bg-dark text-white" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" class="form-control border-gold bg-dark text-white" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control border-gold bg-dark text-white" id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-gold btn-lg">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <p>&copy; 2024 Sajad Nowroozi. All rights reserved.</p>
+        <p>Connect with me on: 
+            <a href="https://github.com/sajadnowroozi2003" target="_blank" class="text-gold">GitHub</a> | 
+            <a href="https://linkedin.com/in/sajadnowroozi" target="_blank" class="text-gold">LinkedIn</a> | 
+            <a href="https://instagram.com/sajad.nowroozi" target="_blank" class="text-gold">Instagram</a>
+        </p>
+    </footer>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
