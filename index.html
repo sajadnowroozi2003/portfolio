@@ -21,10 +21,18 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a class="nav-link text-gold" href="#home">Home</a></li>
-                <li class="nav-item"><a class="nav-link text-gold" href="#skills">Skills</a></li>
-                <li class="nav-item"><a class="nav-link text-gold" href="#projects">Projects</a></li>
-                <li class="nav-item"><a class="nav-link text-gold" href="#contact">Contact</a></li>
+                <li class="nav-item">
+                    <a class="nav-link text-gold" href="#home" aria-label="Go to home section">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-gold" href="#skills" aria-label="Go to skills section">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-gold" href="#projects" aria-label="Go to projects section">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-gold" href="#contact" aria-label="Go to contact section">Contact</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -32,10 +40,43 @@
     <!-- Hero Section -->
     <section id="home" class="hero bg-gradient-dark text-white d-flex align-items-center justify-content-center">
         <div class="container text-center">
-            <img src="profile.png" class="profile-img rounded-circle border border-gold" alt="Sajad Nowroozi">
+            <img src="profile.png" class="profile-img rounded-circle border border-gold" alt="Sajad Nowroozi's Profile Picture">
             <h1 class="display-3 font-weight-bold mt-4">Sajad Nowroozi</h1>
             <p class="lead">Mobile App Developer | Web Developer | Software Engineer</p>
-            <a href="#projects" class="btn btn-outline-gold btn-lg mt-3">Explore My Work</a>
+            <a href="#projects" class="btn btn-outline-gold btn-lg mt-3" aria-label="Explore projects">Explore My Work</a>
+        </div>
+    </section>
+
+    <!-- More About Me Section (Added to Home) -->
+    <section id="about" class="py-5 bg-dark text-white">
+        <div class="container">
+            <h2 class="text-center text-gold mb-5">More About Me</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <h4>Profile Summary</h4>
+                    <p>
+                        I am a passionate software engineer with strong skills in front-end web development and mobile application development using Flutter. I am proficient in HTML5, CSS, JavaScript, Java, and Dart, focusing on creating user-friendly interfaces and innovative solutions. I have experience in project management, complex problem-solving, and creative design. Additionally, I am skilled in using design tools like Figma for modern and visually appealing user interfaces.
+                    </p>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <h4>Key Skills</h4>
+                    <ul>
+                        <li>Front-End Development: HTML5, CSS3, JavaScript (ES6+), Bootstrap</li>
+                        <li>Mobile App Development: Flutter, Dart</li>
+                        <li>Backend Technologies: Firebase, Java</li>
+                        <li>Version Control: Git, GitHub</li>
+                        <li>Design Tools: Figma (UI/UX design)</li>
+                        <li>Soft Skills: Project management, Decision-making, Problem-solving, Creative design</li>
+                    </ul>
+                </div>
+                <div class="col-lg-12 mb-4">
+                    <h4>Experience</h4>
+                    <p>
+                        <strong>Web Developer & Mobile Application Developer at CodeToInspire (2022 - Present)</strong><br>
+                        I have developed responsive websites using HTML5, CSS3, and JavaScript, adhering to best practices in UX/UI design. I also built cross-platform mobile apps using Flutter, focusing on performance and accessibility. I collaborate closely with designers and backend developers to deliver seamless user experiences and have led multiple project teams, ensuring timely delivery while maintaining high coding standards.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -48,13 +89,13 @@
                     <div class="skill-bar mb-4">
                         <h4>Flutter & Dart</h4>
                         <div class="progress">
-                            <div class="progress-bar bg-gold" role="progressbar" style="width: 90%">90%</div>
+                            <div class="progress-bar bg-gold" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
                         </div>
                     </div>
                     <div class="skill-bar mb-4">
                         <h4>Frontend Development (HTML/CSS/JS)</h4>
                         <div class="progress">
-                            <div class="progress-bar bg-gold" role="progressbar" style="width: 85%">85%</div>
+                            <div class="progress-bar bg-gold" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
                         </div>
                     </div>
                 </div>
@@ -62,13 +103,13 @@
                     <div class="skill-bar mb-4">
                         <h4>UI/UX Design (Figma)</h4>
                         <div class="progress">
-                            <div class="progress-bar bg-gold" role="progressbar" style="width: 75%">75%</div>
+                            <div class="progress-bar bg-gold" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
                         </div>
                     </div>
                     <div class="skill-bar mb-4">
                         <h4>Backend (Firebase)</h4>
                         <div class="progress">
-                            <div class="progress-bar bg-gold" role="progressbar" style="width: 80%">80%</div>
+                            <div class="progress-bar bg-gold" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
                         </div>
                     </div>
                 </div>
@@ -84,32 +125,128 @@
                 <!-- Project 1 -->
                 <div class="col-md-4 mb-4">
                     <div class="project-card shadow rounded">
-                        <img src="project1.png" class="img-fluid rounded-top" alt="Project 1">
+                        <img src="Media/topTenSengars/topTenSinger.png" class="img-fluid rounded-top" alt="Top Ten Afghan Singer App Project">
                         <div class="project-info p-3 bg-dark text-white">
                             <h4 class="text-gold">Top Ten Afghan Singer App</h4>
-                            <p>Offline music app using Flutter.</p>
-                            <button type="button" class="btn btn-outline-gold" data-toggle="modal" data-target="#project1Modal">Details</button>
+                            <p>Top Ten Afghan Singers App: Explore and enjoy the top ten Afghan singers with this offline music app. It features easy access to their songs and details, all without needing an internet connection.</p>
+                            <button type="button" class="btn btn-outline-gold" data-toggle="modal" data-target="#project1Modal">Watch Video</button>
                         </div>
                     </div>
                 </div>
-                <!-- Project Modal -->
+
+                <!-- Project 1 Modal -->
                 <div class="modal fade" id="project1Modal" tabindex="-1" role="dialog" aria-labelledby="project1ModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header bg-dark text-white">
-                                <h5 class="modal-title" id="project1ModalLabel">Top Ten Afghan Singer App</h5>
+                                <h5 class="modal-title" id="project1ModalLabel">Top Ten Afghan Singer App Video</h5>
                                 <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <div class="modal-body bg-light">
-                                <p>This app allows users to browse Afghan singers, view details, and play offline music.</p>
+                            <div class="modal-body bg-dark">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="Media/topTenSengars/topTenSinger.mp4" allowfullscreen></iframe>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Repeat similar structure for more projects -->
+            
+
+                <!-- Project 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card shadow rounded">
+                        <img src="Media/TakingNote/noteApp.png" class="img-fluid rounded-top" alt="Note-Taking App Project">
+                        <div class="project-info p-3 bg-dark text-white">
+                            <h4 class="text-gold">Note-Taking App</h4>
+                            <p>Note-Taking Application: Add, delete, and search notes with ease. Notes are securely saved and backed up on Firebase, with seamless multi-device synchronization.</p>
+                            <button type="button" class="btn btn-outline-gold" data-toggle="modal" data-target="#project2Modal">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 Modal -->
+                <div class="modal fade" id="project2Modal" tabindex="-1" role="dialog" aria-labelledby="project2ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-dark text-white">
+                                <h5 class="modal-title" id="project2ModalLabel">Note-Taking App Video</h5>
+                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body bg-dark">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="Media/TakingNote/noteapp.mp4" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 - New Project Info -->
+                <div class="col-md-4 mb-4">
+                    <div class="project-card shadow rounded">
+                        <img src="Media/TopTenFlutter Packages/toptenPackages.png" class="img-fluid rounded-top" alt="Top Ten Flutter Packages Project">
+                        <div class="project-info p-3 bg-dark text-white">
+                            <h4 class="text-gold">Top Ten Flutter Packages</h4>
+                            <p>A curated list of the top ten Flutter packages to streamline app development. Discover essential packages for enhancing your mobile application development process.</p>
+                            <button type="button" class="btn btn-outline-gold" data-toggle="modal" data-target="#project3Modal">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 Modal -->
+                <div class="modal fade" id="project3Modal" tabindex="-1" role="dialog" aria-labelledby="project3ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-dark text-white">
+                                <h5 class="modal-title" id="project3ModalLabel">Top Ten Flutter Packages Video</h5>
+                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body bg-dark">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="Media/TopTenFlutter Packages/toptenFlutterPackages.mp4" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 - Newly Added -->
+                <!-- <div class="col-md-4 mb-4">
+                    <div class="project-card shadow rounded">
+                        <img src="Media/SmartHomeApp/smartHome.png" class="img-fluid rounded-top" alt="Smart Home Control App Project">
+                        <div class="project-info p-3 bg-dark text-white">
+                            <h4 class="text-gold">Smart Home Control App</h4>
+                            <p>Control and monitor your smart home devices with ease. This app provides a user-friendly interface for managing lights, security systems, and other smart appliances from your phone.</p>
+                            <button type="button" class="btn btn-outline-gold" data-toggle="modal" data-target="#project4Modal">Watch Video</button>
+                        </div>
+                    </div>
+                </div>
+
+                Project 4 Modal -->
+                <!-- <div class="modal fade" id="project4Modal" tabindex="-1" role="dialog" aria-labelledby="project4ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header bg-dark text-white">
+                                <h5 class="modal-title" id="project4ModalLabel">Smart Home Control App Video</h5>
+                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body bg-dark">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="Media/SmartHomeApp/smartHome.mp4" allowfullscreen></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -121,34 +258,42 @@
             <form action="submit.php" method="post">
                 <div class="form-group">
                     <label for="name">Your Name</label>
-                    <input type="text" class="form-control border-gold bg-dark text-white" id="name" name="name" required>
+                    <input type="text" class="form-control border-gold bg-dark text-white" id="name" name="name" required aria-label="Enter your name">
                 </div>
                 <div class="form-group">
                     <label for="email">Your Email</label>
-                    <input type="email" class="form-control border-gold bg-dark text-white" id="email" name="email" required>
+                    <input type="email" class="form-control border-gold bg-dark text-white" id="email" name="email" required aria-label="Enter your email">
                 </div>
                 <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea class="form-control border-gold bg-dark text-white" id="message" name="message" rows="5" required></textarea>
+                    <label for="message">Your Message</label>
+                    <textarea class="form-control border-gold bg-dark text-white" id="message" name="message" rows="5" required aria-label="Enter your message"></textarea>
                 </div>
-                <button type="submit" class="btn btn-outline-gold btn-lg">Send Message</button>
+                <button type="submit" class="btn btn-outline-gold btn-lg btn-block">Send Message</button>
             </form>
         </div>
     </section>
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center py-4">
+            <p>&copy; 2024 Sajad Nowroozi. All rights reserved.</p>
+            <p>Connect with me on: 
+                <a href="https://github.com/sajadnowroozi2003" target="_blank" class="text-gold">GitHub</a> | 
+                <a href="https://www.linkedin.com/in/sajjad-nowrozi-717620255" target="_blank" class="text-gold">LinkedIn</a> | 
+                <a href="https://instagram.com/sajad.nowroozi" target="_blank" class="text-gold">Instagram</a>
+            </p>
+        </footer>
+    
+        <!-- Bootstrap JS, Popper.js, and jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+    
+    
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-4">
-        <p>&copy; 2024 Sajad Nowroozi. All rights reserved.</p>
-        <p>Connect with me on: 
-            <a href="https://github.com/sajadnowroozi2003" target="_blank" class="text-gold">GitHub</a> | 
-            <a href="https://linkedin.com/in/sajadnowroozi" target="_blank" class="text-gold">LinkedIn</a> | 
-            <a href="https://instagram.com/sajad.nowroozi" target="_blank" class="text-gold">Instagram</a>
-        </p>
-    </footer>
-
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

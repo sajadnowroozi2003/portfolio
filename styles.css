@@ -11,6 +11,7 @@ body, html {
 a {
     text-decoration: none;
     color: #ffd700; /* Gold color */
+    transition: color 0.3s ease;
 }
 
 a:hover {
@@ -20,36 +21,53 @@ a:hover {
 .navbar-dark .navbar-nav .nav-link {
     color: #ffd700;
     font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .navbar-dark .navbar-nav .nav-link:hover {
     color: white;
 }
 
-
+/* Hero Section */
 .hero {
     height: 100vh;
-    background-color: #0000004a;
-    background-blend-mode:multiply;
+    background-color: rgba(0, 0, 0, 0.5); /* Subtle dark overlay */
+    background-blend-mode: overlay;
     background-image: url('IMG_5086.jpg');
-    background-size:cover;
+    background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-attachment: fixed; 
+    background-attachment: fixed; /* Parallax effect */
+    position: relative;
+}
+
+.hero::before {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay to make text pop */
 }
 
 .profile-img {
-    width: 150px;
-    height: 150px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    border: 5px solid #ffd700;
+    border: 6px solid #ffd700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    z-index: 1; /* To ensure image is above the overlay */
+}
+
+.hero h1, .hero p {
+    z-index: 1; /* Ensure text is above the overlay */
 }
 
 .btn-outline-gold {
     border-color: #ffd700;
     color: #ffd700;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-outline-gold:hover {
@@ -67,6 +85,9 @@ a:hover {
     color: #ffd700;
     font-weight: 700;
     margin-bottom: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .skill-bar {
@@ -75,6 +96,8 @@ a:hover {
 
 .progress-bar {
     background-color: #ffd700;
+    height: 18px;
+    border-radius: 15px;
 }
 
 /* Projects Section */
@@ -84,29 +107,49 @@ a:hover {
 }
 
 .project-card {
-    background-color: white;
-    border: none;
-    transition: transform 0.3s ease;
+    background-color: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .project-card img {
     width: 100%;
     height: auto;
-    border-radius: 10px 10px 0 0;
+    border-radius: 12px 12px 0 0;
+    transition: opacity 0.3s ease;
 }
 
 .project-card:hover {
     transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.project-card:hover img {
+    opacity: 0.9;
 }
 
 .project-info {
-    padding: 1rem;
+    padding: 1.5rem;
     background-color: #111;
     color: white;
 }
 
 .project-info h4 {
     color: #ffd700;
+    font-size: 1.4rem;
+}
+
+.project-info p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.project-info button:hover {
+    background-color: #ffd700;
+    color: #111;
+    border-color: #ffd700;
 }
 
 /* Contact Section */
@@ -117,12 +160,17 @@ a:hover {
 
 .contact-section h2 {
     color: #ffd700;
+    text-align: center;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .contact-section .form-control {
     background-color: #222;
     color: white;
     border: 2px solid #ffd700;
+    transition: border-color 0.3s ease;
 }
 
 .contact-section .form-control:focus {
@@ -133,6 +181,7 @@ a:hover {
 .contact-section .btn-outline-gold {
     border-color: #ffd700;
     color: #ffd700;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .contact-section .btn-outline-gold:hover {
@@ -144,6 +193,8 @@ a:hover {
 footer {
     background-color: #000;
     color: white;
+    padding: 2rem 0;
+    text-align: center;
 }
 
 footer p {
@@ -153,6 +204,27 @@ footer p {
 footer a {
     color: #ffd700;
     font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-in-out;
 }
 
 /* Responsive Design */
@@ -160,6 +232,7 @@ footer a {
     .hero {
         padding: 2rem 1rem;
         text-align: center;
+        background-attachment: scroll;
     }
 
     .profile-img {
@@ -173,5 +246,25 @@ footer a {
 
     .projects-section {
         padding: 3rem 1rem;
+    }
+
+    .project-info h4 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .skills-section h2,
+    .contact-section h2 {
+        font-size: 1.75rem;
+    }
+
+    .btn-outline-gold {
+        font-size: 1rem;
+        padding: 0.75rem 1.25rem;
+    }
+
+    .project-card {
+        margin-bottom: 1rem;
     }
 }
