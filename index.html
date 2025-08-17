@@ -1,299 +1,540 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sajad Nowroozi - Portfolio</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sajad Nowroozi — Portfolio</title>
+  <meta name="description" content="پرونده کاری سجاد نوروزی — توسعه‌دهنده موبایل (Flutter) و وب. پروژه‌ها، مهارت‌ها، رزومه و راه‌های ارتباطی." />
+  <meta name="theme-color" content="#0f1115" />
+  <!-- Open Graph for sharing -->
+  <meta property="og:title" content="Sajad Nowroozi — Portfolio" />
+  <meta property="og:description" content="Flutter • Web • UI/UX" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="profile.png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet" />
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0f1115; /* dark */
+      --bg-soft: #141821;
+      --card: #0f1524;
+      --text: #f7f7fb;
+      --muted: #aab1c3;
+      --brand: #ffd54a; /* warm gold */
+      --brand-2: #76e4f7; /* accent */
+      --border: rgba(255,255,255,.08);
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+    [data-theme="light"] {
+      --bg: #f7f9fc; /* light */
+      --bg-soft: #ffffff;
+      --card: #ffffff;
+      --text: #0e1116;
+      --muted: #536079;
+      --brand: #c08b00;
+      --brand-2: #0ea5b6;
+      --border: rgba(0,0,0,.08);
+      --shadow: 0 10px 30px rgba(10, 20, 40, .10);
+    }
+
+    html, body {height: 100%;}
+    body {
+      font-family: 'Vazirmatn', 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(118, 228, 247, .12), transparent 60%),
+                  radial-gradient(1000px 700px at 10% 110%, rgba(255, 213, 74, .10), transparent 60%),
+                  var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    /* Glassy navbar */
+    .navbar {
+      backdrop-filter: saturate(130%) blur(12px);
+      background: rgba(20, 24, 33, .6);
+      border-bottom: 1px solid var(--border);
+    }
+    [data-theme="light"] .navbar {
+      background: rgba(255, 255, 255, .75);
+    }
+    .nav-link { color: var(--text); opacity: .85; }
+    .nav-link.active, .nav-link:hover { color: var(--brand); opacity: 1; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: grid; place-items: center;
+      overflow: clip;
+      isolation: isolate;
+    }
+    .bg-orb {
+      position: absolute; inset: -20% -10% auto auto; width: 55vmax; height: 55vmax;
+      background: radial-gradient(circle at 30% 30%, rgba(255, 213, 74, .25), transparent 50%),
+                  radial-gradient(circle at 70% 70%, rgba(118, 228, 247, .25), transparent 55%);
+      filter: blur(40px); z-index: -1; opacity: .6;
+    }
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+    .avatar {
+      width: 112px; height: 112px; border-radius: 50%;
+      border: 4px solid var(--brand);
+      box-shadow: 0 12px 30px rgba(255, 213, 74, .15);
+      object-fit: cover; object-position: center;
+    }
+    .badge-spark {
+      background: rgba(118, 228, 247, .12);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 999px;
+    }
+    .gradient-text { background: linear-gradient(90deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+    /* Section shells */
+    section { padding: 96px 0; }
+    .section-head { margin-bottom: 36px; }
+    .section-eyebrow { color: var(--brand); letter-spacing: .12em; font-weight: 800; font-size: .85rem; }
+    .section-title { font-weight: 800; }
+
+    /* Cards */
+    .card-surface { background: var(--card); border: 1px solid var(--border); border-radius: 22px; }
+    .card-surface:hover { transform: translateY(-3px); transition: .25s ease; box-shadow: var(--shadow); }
+
+    /* Skills */
+    .skill { display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px dashed var(--border); }
+    .skill:last-child { border-bottom: 0; }
+    .pill { border:1px solid var(--border); border-radius:999px; padding:.25rem .7rem; font-size:.85rem; color:var(--muted); }
+
+    /* Projects */
+    .project { overflow: hidden; }
+    .project .thumb { aspect-ratio: 16/10; object-fit: cover; width: 100%; border-top-left-radius: 22px; border-top-right-radius: 22px; }
+    .project .tags .pill { margin-left:.25rem; }
+    .filter-btn { border:1px solid var(--border)!important; }
+    .filter-btn.active { background: var(--brand); color: #111!important; border-color: transparent!important; }
+
+    /* Timeline */
+    .timeline { position: relative; }
+    .timeline::before { content:""; position: absolute; inset-inline-start: 14px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+    .t-item { position: relative; padding-inline-start: 48px; padding-bottom: 24px; }
+    .t-item:last-child { padding-bottom: 0; }
+    .t-dot { position: absolute; inset-inline-start: 6px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px rgba(255,213,74,.18); }
+
+    /* Contact */
+    .form-control, .form-select { background: var(--bg-soft); border:1px solid var(--border); color: var(--text); }
+    .form-control:focus, .form-select:focus { border-color: var(--brand); box-shadow: 0 0 0 .25rem rgba(255,213,74,.15); }
+    .btn-brand { border:1px solid var(--brand); color: var(--text); }
+    .btn-brand:hover { background: var(--brand); color: #111; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--border); }
+
+    /* Utility */
+    .maxw-3 { max-width: 920px; }
+    .maxw-2 { max-width: 720px; }
+    .shadow-soft { box-shadow: var(--shadow); }
+    .blur-12 { backdrop-filter: blur(12px); }
+
+    /* Smooth Fade */
+    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+  </style>
 </head>
 <body>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand font-weight-bold text-gold" href="#">Sajad Nowroozi</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link text-gold" href="#home" aria-label="Go to home section">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-gold" href="#skills" aria-label="Go to skills section">Skills</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-gold" href="#projects" aria-label="Go to projects section">Projects</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-gold" href="#contact" aria-label="Go to contact section">Contact</a>
-                </li>
-            </ul>
+  <!-- Navbar -->
+  <nav id="top" class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#top" aria-label="بازگشت به بالا">
+        <span class="gradient-text">Sajad</span> Nowroozi
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="باز کردن منو">
+        <span class="navbar-toggler-icon"><i class="ri-menu-3-line"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link active" href="#home">خانه</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">مهارت‌ها</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">پروژه‌ها</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">تجربه</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">ارتباط</a></li>
+        </ul>
+        <div class="d-flex gap-2">
+          <button id="langToggle" class="btn btn-sm btn-outline-secondary" aria-label="تغییر زبان">FA / EN</button>
+          <button id="themeToggle" class="btn btn-sm btn-outline-secondary" aria-label="تغییر حالت روشن/تاریک"><i class="ri-sun-line"></i></button>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero bg-gradient-dark text-white d-flex align-items-center justify-content-center">
-        <div class="container text-center">
-            <img src="profile.png" class="profile-img rounded-circle border border-gold" alt="Sajad Nowroozi's Profile Picture">
-            <h1 class="display-3 font-weight-bold mt-4">Sajad Nowroozi</h1>
-            <p class="lead">Mobile App Developer | Web Developer | Software Engineer</p>
-            <a href="#projects" class="btn btn-outline-gold btn-lg mt-3" aria-label="Explore projects">Explore My Work</a>
+  <!-- Hero -->
+  <header id="home" class="hero container py-5">
+    <div class="bg-orb" aria-hidden="true"></div>
+    <div class="hero-card col-12 col-lg-10 p-4 p-md-5 text-center reveal">
+      <div class="d-flex justify-content-center mb-3">
+        <img class="avatar" src="profile.png" alt="عکس سجاد نوروزی" />
+      </div>
+      <span class="badge badge-spark px-3 py-2 mb-3 d-inline-flex align-items-center gap-2">
+        <i class="ri-flutter-fill me-1"></i> Flutter • Web • UI/UX
+      </span>
+      <h1 class="display-5 fw-800 mb-2">سلام، من <span class="gradient-text">سجاد نوروزی</span> هستم</h1>
+      <p class="lead maxw-3 mx-auto">توسعه‌دهنده موبایل با فلاتر و توسعه‌دهنده وب. عاشق ساخت رابط‌های سریع، تمیز و قابل‌دسترس. تمرکز روی تجربه کاربری و عملکرد.</p>
+      <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
+        <a class="btn btn-brand" href="#projects"><i class="ri-rocket-line ms-1"></i> مشاهده پروژه‌ها</a>
+        <a class="btn btn-outline-secondary" href="#contact"><i class="ri-send-plane-line ms-1"></i> همکاری</a>
+        <a class="btn btn-outline-secondary" href="https://github.com/sajadnowroozi2003" target="_blank" rel="noreferrer"><i class="ri-github-line ms-1"></i> گیت‌هاب</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Skills -->
+  <section id="skills" class="container reveal">
+    <div class="section-head text-center maxw-2 mx-auto">
+      <div class="section-eyebrow">SKILLS</div>
+      <h2 class="section-title h1 mt-2">مهارت‌های کلیدی</h2>
+      <p class="text-secondary">بر ترکیبی از عمق فنی و ذوق طراحی تمرکز دارم.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card-surface p-3 h-100">
+          <h5 class="mb-3"><i class="ri-smartphone-line ms-1"></i> موبایل (Flutter/Dart)</h5>
+          <div class="skill"><span>State Management</span><span class="pill">Provider • Riverpod</span></div>
+          <div class="skill"><span>Offline-First</span><span class="pill">Assets • Hive</span></div>
+          <div class="skill"><span>Media</span><span class="pill">Audio • Video • Chewie</span></div>
+          <div class="skill"><span>CI/CD</span><span class="pill">Firebase • Play Console</span></div>
         </div>
-    </section>
+      </div>
+      <div class="col-md-6">
+        <div class="card-surface p-3 h-100">
+          <h5 class="mb-3"><i class="ri-window-line ms-1"></i> وب (Frontend)</h5>
+          <div class="skill"><span>HTML5/CSS3/JS</span><span class="pill">Bootstrap 5</span></div>
+          <div class="skill"><span>UX/UI</span><span class="pill">Figma • Design Systems</span></div>
+          <div class="skill"><span>Version Control</span><span class="pill">Git • GitHub</span></div>
+          <div class="skill"><span>Backend</span><span class="pill">Firebase</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- More About Me Section (Added to Home) -->
-    <section id="about" class="py-5 bg-dark text-white">
-        <div class="container">
-            <h2 class="text-center text-gold mb-5">More About Me</h2>
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <h4>Profile Summary</h4>
-                    <p>
-                        I am a passionate software engineer with strong skills in front-end web development and mobile application development using Flutter. I am proficient in HTML5, CSS, JavaScript, Java, and Dart, focusing on creating user-friendly interfaces and innovative solutions. I have experience in project management, complex problem-solving, and creative design. Additionally, I am skilled in using design tools like Figma for modern and visually appealing user interfaces.
-                    </p>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <h4>Key Skills</h4>
-                    <ul>
-                        <li>Front-End Development: HTML5, CSS3, JavaScript (ES6+), Bootstrap</li>
-                        <li>Mobile App Development: Flutter, Dart</li>
-                        <li>Backend Technologies: Firebase, Java</li>
-                        <li>Version Control: Git, GitHub</li>
-                        <li>Design Tools: Figma (UI/UX design)</li>
-                        <li>Soft Skills: Project management, Decision-making, Problem-solving, Creative design</li>
-                    </ul>
-                </div>
-                <div class="col-lg-12 mb-4">
-                    <h4>Experience</h4>
-                    <p>
-                        <strong>Web Developer & Mobile Application Developer at CodeToInspire (2022 - Present)</strong><br>
-                        I have developed responsive websites using HTML5, CSS3, and JavaScript, adhering to best practices in UX/UI design. I also built cross-platform mobile apps using Flutter, focusing on performance and accessibility. I collaborate closely with designers and backend developers to deliver seamless user experiences and have led multiple project teams, ensuring timely delivery while maintaining high coding standards.
-                    </p>
-                </div>
+  <!-- Projects -->
+  <section id="projects" class="container reveal">
+    <div class="section-head text-center maxw-2 mx-auto">
+      <div class="section-eyebrow">PROJECTS</div>
+      <h2 class="section-title h1 mt-2">نمونه‌کارها</h2>
+      <p class="text-secondary">گزیده‌ای از کارها و علاقه‌مندی‌ها. فیلتر کنید تا سریع‌تر پیدا کنید.</p>
+    </div>
+
+    <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
+      <button class="btn filter-btn active" data-filter="all">همه</button>
+      <button class="btn filter-btn" data-filter="flutter">Flutter</button>
+      <button class="btn filter-btn" data-filter="web">Web</button>
+      <button class="btn filter-btn" data-filter="uiux">UI/UX</button>
+    </div>
+
+    <div class="row g-4" id="projectGrid">
+      <!-- Project 1 -->
+      <div class="col-md-6 col-lg-4 project" data-tags="flutter uiux">
+        <div class="card-surface project h-100">
+          <img class="thumb" src="Media/topTenSengars/topTenSinger.png" alt="Top Ten Afghan Singer App" />
+          <div class="p-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="mb-0">Top Ten Afghan Singer</h5>
+              <div class="tags d-flex"><span class="pill">Flutter</span><span class="pill">Offline</span></div>
             </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="skills-section py-5 bg-dark text-white">
-        <div class="container">
-            <h2 class="text-center text-gold mb-5">Skills</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="skill-bar mb-4">
-                        <h4>Flutter & Dart</h4>
-                        <div class="progress">
-                            <div class="progress-bar bg-gold" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
-                        </div>
-                    </div>
-                    <div class="skill-bar mb-4">
-                        <h4>Frontend Development (HTML/CSS/JS)</h4>
-                        <div class="progress">
-                            <div class="progress-bar bg-gold" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="skill-bar mb-4">
-                        <h4>UI/UX Design (Figma)</h4>
-                        <div class="progress">
-                            <div class="progress-bar bg-gold" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                        </div>
-                    </div>
-                    <div class="skill-bar mb-4">
-                        <h4>Backend (Firebase)</h4>
-                        <div class="progress">
-                            <div class="progress-bar bg-gold" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
-                        </div>
-                    </div>
-                </div>
+            <p class="mb-3 text-secondary">اپ موسیقی آفلاین با لیست ۱۰ خواننده برتر افغان، به‌همراه جزئیات هر خواننده و آهنگ‌ها.</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video1"><i class="ri-play-circle-line ms-1"></i> ویدیو</button>
+              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank" rel="noreferrer"><i class="ri-github-line ms-1"></i> سورس</a>
             </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects-section py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center text-dark mb-5">Projects</h2>
-            <div class="row">
-                <!-- Project 1 -->
-                <div class="col-md-4 mb-4">
-                    <div class="project-card shadow rounded">
-                        <img src="Media/topTenSengars/topTenSinger.png" class="img-fluid rounded-top" alt="Top Ten Afghan Singer App Project">
-                        <div class="project-info p-3 bg-dark text-white">
-                            <h4 class="text-gold">Top Ten Afghan Singer App</h4>
-                            <p>Top Ten Afghan Singers App: Explore and enjoy the top ten Afghan singers with this offline music app. It features easy access to their songs and details, all without needing an internet connection.</p>
-                            <button type="button" class="btn btn-outline-gold" data-toggle="modal" data-target="#project1Modal">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 1 Modal -->
-                <div class="modal fade" id="project1Modal" tabindex="-1" role="dialog" aria-labelledby="project1ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header bg-dark text-white">
-                                <h5 class="modal-title" id="project1ModalLabel">Top Ten Afghan Singer App Video</h5>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body bg-dark">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="Media/topTenSengars/Toptensinger.mp4" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            
-
-                <!-- Project 2 -->
-                <div class="col-md-4 mb-4">
-                    <div class="project-card shadow rounded">
-                        <img src="Media/TakingNote/noteApp.png" class="img-fluid rounded-top" alt="Note-Taking App Project">
-                        <div class="project-info p-3 bg-dark text-white">
-                            <h4 class="text-gold">Note-Taking App</h4>
-                            <p>Note-Taking Application: Add, delete, and search notes with ease. Notes are securely saved and backed up on Firebase, with seamless multi-device synchronization.</p>
-                            <button type="button" class="btn btn-outline-gold" data-toggle="modal" data-target="#project2Modal">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 Modal -->
-                <div class="modal fade" id="project2Modal" tabindex="-1" role="dialog" aria-labelledby="project2ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header bg-dark text-white">
-                                <h5 class="modal-title" id="project2ModalLabel">Note-Taking App Video</h5>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body bg-dark">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="Media/TakingNote/Noteapp.mp4" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 - New Project Info -->
-                <div class="col-md-4 mb-4">
-                    <div class="project-card shadow rounded">
-                        <img src="Media/TopTenFlutterPackages/toptenPackages.png" class="img-fluid rounded-top" alt="Top Ten Flutter Packages Project">
-                        <div class="project-info p-3 bg-dark text-white">
-                            <h4 class="text-gold">Top Ten Flutter Packages</h4>
-                            <p>A curated list of the top ten Flutter packages to streamline app development. Discover essential packages for enhancing your mobile application development process.</p>
-                            <button type="button" class="btn btn-outline-gold" data-toggle="modal" data-target="#project3Modal">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 Modal -->
-                <div class="modal fade" id="project3Modal" tabindex="-1" role="dialog" aria-labelledby="project3ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header bg-dark text-white">
-                                <h5 class="modal-title" id="project3ModalLabel">Top Ten Flutter Packages Video</h5>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body bg-dark">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="Media/TopTenFlutterPackages/Toptenflutterpackages.mp4" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 - Newly Added -->
-                <div class="col-md-4 mb-4">
-                    <div class="project-card shadow rounded">
-                        <img src="Media/SNBeauty/SNBeauty.png" class="img-fluid rounded-top" alt="Smart Home Control App Project">
-                        <div class="project-info p-3 bg-dark text-white">
-                            <h4 class="text-gold">SN Beauty</h4>
-                            <p>Book appointment and manage your beauty salon services with ease.</p>
-                            <button type="button" class="btn btn-outline-gold" data-toggle="modal" data-target="#project4Modal">Watch Video</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 4 Modal -->
-                <div class="modal fade" id="project4Modal" tabindex="-1" role="dialog" aria-labelledby="project4ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header bg-dark text-white">
-                                <h5 class="modal-title" id="project4ModalLabel">SN Beauty Video</h5>
-                                <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body bg-dark">
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="Media/SNBeauty/SNBeauty.mp4" allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      </div>
+      <!-- Project 2 -->
+      <div class="col-md-6 col-lg-4 project" data-tags="flutter web uiux">
+        <div class="card-surface project h-100">
+          <img class="thumb" src="Media/TakingNote/noteApp.png" alt="Note Taking App" />
+          <div class="p-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="mb-0">Note Taking</h5>
+              <div class="tags d-flex"><span class="pill">Flutter</span><span class="pill">Firebase</span></div>
             </div>
+            <p class="mb-3 text-secondary">افزودن، حذف و جست‌وجوی نوت‌ها با همگام‌سازی و پشتیبان‌گیری ابری.</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video2"><i class="ri-play-circle-line ms-1"></i> ویدیو</button>
+              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank" rel="noreferrer"><i class="ri-github-line ms-1"></i> سورس</a>
+            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section py-5 bg-dark text-white">
-        <div class="container">
-            <h2 class="text-center text-gold mb-5">Contact Me</h2>
-            <form action="submit.php" method="post">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" class="form-control border-gold bg-dark text-white" id="name" name="name" required aria-label="Enter your name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Your Email</label>
-                    <input type="email" class="form-control border-gold bg-dark text-white" id="email" name="email" required aria-label="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="message">Your Message</label>
-                    <textarea class="form-control border-gold bg-dark text-white" id="message" name="message" rows="5" required aria-label="Enter your message"></textarea>
-                </div>
-                <button type="submit" class="btn btn-outline-gold btn-lg btn-block">Send Message</button>
-            </form>
+      </div>
+      <!-- Project 3 -->
+      <div class="col-md-6 col-lg-4 project" data-tags="flutter uiux">
+        <div class="card-surface project h-100">
+          <img class="thumb" src="Media/TopTenFlutterPackages/toptenPackages.png" alt="Top Ten Flutter Packages" />
+          <div class="p-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="mb-0">Top 10 Flutter Packages</h5>
+              <div class="tags d-flex"><span class="pill">Flutter</span><span class="pill">UI</span></div>
+            </div>
+            <p class="mb-3 text-secondary">فهرستی منتخب از پکیج‌های محبوب جهت سرعت‌بخشیدن به توسعه اپلیکیشن.</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video3"><i class="ri-play-circle-line ms-1"></i> ویدیو</button>
+              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank" rel="noreferrer"><i class="ri-github-line ms-1"></i> سورس</a>
+            </div>
+          </div>
         </div>
-    </section>
-        <!-- Footer -->
-        <footer class="bg-dark text-white text-center py-4">
-            <p>&copy; 2024 Sajad Nowroozi. All rights reserved.</p>
-            <p>Connect with me on: 
-                <a href="https://github.com/sajadnowroozi2003" target="_blank" class="text-gold">GitHub</a> | 
-                <a href="https://www.linkedin.com/in/sajjad-nowrozi-717620255" target="_blank" class="text-gold">LinkedIn</a> | 
-                <a href="https://instagram.com/sajad.nowroozi" target="_blank" class="text-gold">Instagram</a>
-            </p>
-        </footer>
-    
-        <!-- Bootstrap JS, Popper.js, and jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
-    </html>
-    
-    
+      </div>
+      <!-- Project 4 -->
+      <div class="col-md-6 col-lg-4 project" data-tags="flutter uiux web">
+        <div class="card-surface project h-100">
+          <img class="thumb" src="Media/SNBeauty/SNBeauty.png" alt="SN Beauty Booking" />
+          <div class="p-3">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <h5 class="mb-0">SN Beauty</h5>
+              <div class="tags d-flex"><span class="pill">Booking</span><span class="pill">Flutter</span></div>
+            </div>
+            <p class="mb-3 text-secondary">رزرو نوبت و مدیریت خدمات سالن زیبایی با طراحی تمیز و مدرن.</p>
+            <div class="d-flex gap-2">
+              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video4"><i class="ri-play-circle-line ms-1"></i> ویدیو</button>
+              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank" rel="noreferrer"><i class="ri-github-line ms-1"></i> سورس</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Video Modals -->
+    <div class="modal fade" id="video1" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content card-surface">
+          <div class="modal-header border-0">
+            <h5 class="modal-title">Top Ten Afghan Singer</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <video controls class="w-100 rounded" poster="Media/topTenSengars/topTenSinger.png">
+              <source src="Media/topTenSengars/Toptensinger.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="video2" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content card-surface">
+          <div class="modal-header border-0">
+            <h5 class="modal-title">Note Taking</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <video controls class="w-100 rounded" poster="Media/TakingNote/noteApp.png">
+              <source src="Media/TakingNote/Noteapp.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="video3" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content card-surface">
+          <div class="modal-header border-0">
+            <h5 class="modal-title">Top 10 Flutter Packages</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <video controls class="w-100 rounded" poster="Media/TopTenFlutterPackages/toptenPackages.png">
+              <source src="Media/TopTenFlutterPackages/Toptenflutterpackages.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="video4" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content card-surface">
+          <div class="modal-header border-0">
+            <h5 class="modal-title">SN Beauty</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <video controls class="w-100 rounded" poster="Media/SNBeauty/SNBeauty.png">
+              <source src="Media/SNBeauty/SNBeauty.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience / About -->
+  <section id="experience" class="container reveal">
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-5">
+        <div class="section-head">
+          <div class="section-eyebrow">ABOUT</div>
+          <h2 class="section-title h1 mt-2">درباره من</h2>
+          <p class="text-secondary">توسعه‌دهنده نرم‌افزار با تمرکز بر ساخت تجربه‌های سریع و روان. آشنا با مدیریت پروژه، حل مسئله و طراحی مدرن.</p>
+        </div>
+        <div class="card-surface p-3">
+          <div class="d-flex align-items-center gap-3">
+            <i class="ri-map-pin-line fs-4 ms-2"></i>
+            <div>
+              <div class="fw-bold">هرات، افغانستان</div>
+              <div class="text-secondary small">قابل همکاری ریموت</div>
+            </div>
+          </div>
+          <hr class="my-3" />
+          <div class="d-flex align-items-center gap-3">
+            <i class="ri-graduation-cap-line fs-4 ms-2"></i>
+            <div>
+              <div class="fw-bold">Code To Inspire</div>
+              <div class="text-secondary small">Web & Mobile Developer (2022—اکنون)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="card-surface p-3 timeline">
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <h6 class="mb-1">Web & Mobile Developer — CTI</h6>
+            <div class="text-secondary small mb-2">2022 تا اکنون</div>
+            <p class="mb-0">توسعه وب‌سایت‌های ریسپانسیو با HTML/CSS/JS و ساخت اپ‌های کراس‌پلتفرم با Flutter. همکاری نزدیک با طراح و بک‌اند و هدایت تیم‌های کوچک.</p>
+          </div>
+          <div class="t-item">
+            <div class="t-dot"></div>
+            <h6 class="mb-1">Freelance Projects</h6>
+            <div class="text-secondary small mb-2">موازی</div>
+            <p class="mb-0">پیاده‌سازی سیستم رزرو، اپ‌های آفلاین، و رابط‌های کاربری با تمرکز بر دسترس‌پذیری و عملکرد.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="container reveal">
+    <div class="section-head text-center maxw-2 mx-auto">
+      <div class="section-eyebrow">CONTACT</div>
+      <h2 class="section-title h1 mt-2">ارتباط با من</h2>
+      <p class="text-secondary">برای همکاری یا پرسش‌ها پیام بدهید.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <form class="card-surface p-3" action="submit.php" method="post">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">نام</label>
+              <input name="name" type="text" class="form-control" required aria-label="نام" />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">ایمیل</label>
+              <input name="email" type="email" class="form-control" required aria-label="ایمیل" />
+            </div>
+            <div class="col-12">
+              <label class="form-label">پیام</label>
+              <textarea name="message" class="form-control" rows="5" required aria-label="پیام"></textarea>
+            </div>
+            <div class="col-12 d-flex justify-content-between align-items-center">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="copyMe" />
+                <label class="form-check-label" for="copyMe">یک کپی ایمیل کن</label>
+              </div>
+              <button class="btn btn-brand" type="submit"><i class="ri-send-plane-2-line ms-1"></i> ارسال</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-5">
+        <div class="card-surface p-3 h-100">
+          <h5 class="mb-3">شبکه‌های اجتماعی</h5>
+          <a class="d-flex align-items-center gap-2 mb-2" href="https://github.com/sajadnowroozi2003" target="_blank" rel="noreferrer"><i class="ri-github-line fs-4"></i> /sajadnowroozi2003</a>
+          <a class="d-flex align-items-center gap-2 mb-2" href="https://www.linkedin.com/in/sajjad-nowrozi-717620255" target="_blank" rel="noreferrer"><i class="ri-linkedin-box-line fs-4"></i> LinkedIn</a>
+          <a class="d-flex align-items-center gap-2" href="https://instagram.com/sajad.nowroozi" target="_blank" rel="noreferrer"><i class="ri-instagram-line fs-4"></i> @sajad.nowroozi</a>
+          <hr class="my-3" />
+          <p class="small text-secondary">برای پاسخ‌دهی سریع‌تر، لطفاً موضوع و محدوده زمانی پروژه را در پیام درج کنید.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-4 mt-5 text-center">
+    <div class="container">
+      <div class="d-flex justify-content-center gap-3 mb-2">
+        <a class="pill" href="#top" aria-label="بازگشت به بالا"><i class="ri-arrow-up-line"></i> بالا</a>
+        <a class="pill" href="#projects"><i class="ri-terminal-box-line"></i> پروژه‌ها</a>
+        <a class="pill" href="#contact"><i class="ri-chat-1-line"></i> پیام بده</a>
+      </div>
+      <div class="text-secondary">© <span id="year"></span> Sajad Nowroozi — همه حقوق محفوظ است.</div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // theme persistence
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+    themeBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? '' : 'light';
+      if (next) document.documentElement.setAttribute('data-theme', next); else document.documentElement.removeAttribute('data-theme');
+      localStorage.setItem('theme', next);
+      themeBtn.innerHTML = next ? '<i class="ri-moon-line"></i>' : '<i class="ri-sun-line"></i>';
+    });
+
+    // simple reveal on scroll
+    const onScrollReveal = () => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) el.classList.add('show');
+      });
+    };
+    window.addEventListener('scroll', onScrollReveal);
+    window.addEventListener('load', onScrollReveal);
+
+    // projects filter
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#projectGrid .project');
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tag = btn.dataset.filter;
+      cards.forEach(card => {
+        if (tag === 'all' || card.dataset.tags.includes(tag)) {
+          card.style.display = '';
+          setTimeout(()=> card.classList.add('show'), 10);
+        } else {
+          card.style.display = 'none';
+          card.classList.remove('show');
+        }
+      });
+    }));
+
+    // FA/EN toggle (very simple)
+    const langBtn = document.getElementById('langToggle');
+    let isFA = true;
+    langBtn.addEventListener('click', () => {
+      isFA = !isFA;
+      document.documentElement.dir = isFA ? 'rtl' : 'ltr';
+      document.documentElement.lang = isFA ? 'fa' : 'en';
+      // Minimal static text swap (extend as needed)
+      document.querySelectorAll('[data-i18n]')?.forEach(()=>{}); // reserved for future dictionary
+    });
+  </script>
 </body>
 </html>
