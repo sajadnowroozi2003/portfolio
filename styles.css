@@ -267,4 +267,16 @@ footer a:hover {
     .project-card {
         margin-bottom: 1rem;
     }
+    .modal-content {
+  background: transparent !important;
+  border: none !important;
+}
+.modal-backdrop {
+  backdrop-filter: blur(8px);
+  background: rgba(0,0,0,.7) !important;
+}
+video {
+  border-radius: 12px;
+  overflow: hidden;
+}
 }
