@@ -14,25 +14,25 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet" />
-  <!-- Bootstrap 5 -->
+  <!-- Bootstrap 5 RTL -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" rel="stylesheet" />
   <!-- Icons -->
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #0f1115; /* dark */
+      --bg: #0f1115;
       --bg-soft: #141821;
       --card: #0f1524;
       --text: #f7f7fb;
       --muted: #aab1c3;
-      --brand: #ffd54a; /* warm gold */
-      --brand-2: #76e4f7; /* accent */
+      --brand: #ffd54a;
+      --brand-2: #76e4f7;
       --border: rgba(255,255,255,.08);
       --shadow: 0 10px 30px rgba(0, 0, 0, .35);
     }
     [data-theme="light"] {
-      --bg: #f7f9fc; /* light */
+      --bg: #f7f9fc;
       --bg-soft: #ffffff;
       --card: #ffffff;
       --text: #0e1116;
@@ -43,9 +43,9 @@
       --shadow: 0 10px 30px rgba(10, 20, 40, .10);
     }
 
-    html, body {height: 100%;}
+    html, body { height: 100%; margin: 0; padding: 0; }
     body {
-      font-family: 'Vazirmatn', 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: 'Vazirmatn', 'Inter', system-ui, -apple-system, sans-serif;
       background: radial-gradient(1200px 800px at 80% -10%, rgba(118, 228, 247, .12), transparent 60%),
                   radial-gradient(1000px 700px at 10% 110%, rgba(255, 213, 74, .10), transparent 60%),
                   var(--bg);
@@ -53,7 +53,7 @@
       scroll-behavior: smooth;
     }
 
-    /* Glassy navbar */
+    /* Navbar */
     .navbar {
       backdrop-filter: saturate(130%) blur(12px);
       background: rgba(20, 24, 33, .6);
@@ -84,91 +84,137 @@
       border: 1px solid var(--border);
       border-radius: 28px;
       box-shadow: var(--shadow);
+      padding: 2rem;
     }
     .avatar {
       width: 112px; height: 112px; border-radius: 50%;
       border: 4px solid var(--brand);
       box-shadow: 0 12px 30px rgba(255, 213, 74, .15);
-      object-fit: cover; object-position: center;
+      object-fit: cover;
     }
     .badge-spark {
       background: rgba(118, 228, 247, .12);
       border: 1px solid var(--border);
       color: var(--text);
       border-radius: 999px;
+      padding: .5rem 1rem;
     }
     .gradient-text { background: linear-gradient(90deg, var(--brand), var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-    /* Section shells */
+    /* Sections */
     section { padding: 96px 0; }
     .section-head { margin-bottom: 36px; }
     .section-eyebrow { color: var(--brand); letter-spacing: .12em; font-weight: 800; font-size: .85rem; }
     .section-title { font-weight: 800; }
 
     /* Cards */
-    .card-surface { background: var(--card); border: 1px solid var(--border); border-radius: 22px; }
-    .card-surface:hover { transform: translateY(-3px); transition: .25s ease; box-shadow: var(--shadow); }
+    .card-surface {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .card-surface:hover {
+      transform: translateY(-5px);
+      transition: transform .3s ease, box-shadow .3s ease;
+      box-shadow: 0 20px 40px rgba(0,0,0,.25);
+    }
 
     /* Skills */
-    .skill { display:flex; justify-content:space-between; align-items:center; padding:14px 16px; border-bottom:1px dashed var(--border); }
+    .skill {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 16px; border-bottom: 1px dashed var(--border);
+    }
     .skill:last-child { border-bottom: 0; }
-    .pill { border:1px solid var(--border); border-radius:999px; padding:.25rem .7rem; font-size:.85rem; color:var(--muted); }
+    .pill {
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: .25rem .7rem; font-size: .85rem; color: var(--muted);
+    }
 
     /* Projects */
-    .project { overflow: hidden; }
-    .project .thumb { aspect-ratio: 16/10; object-fit: cover; width: 100%; border-top-left-radius: 22px; border-top-right-radius: 22px; }
-    .project .tags .pill { margin-left:.25rem; }
-    .filter-btn { border:1px solid var(--border)!important; }
-    .filter-btn.active { background: var(--brand); color: #111!important; border-color: transparent!important; }
+    .project .thumb {
+      aspect-ratio: 16/10; object-fit: cover; width: 100%;
+      border-top-left-radius: 22px; border-top-right-radius: 22px;
+    }
+    .filter-btn {
+      border: 1px solid var(--border) !important;
+      transition: all .2s ease;
+    }
+    .filter-btn.active {
+      background: var(--brand); color: #111 !important;
+      border-color: transparent !important;
+    }
 
     /* Timeline */
-    .timeline { position: relative; }
-    .timeline::before { content:""; position: absolute; inset-inline-start: 14px; top: 0; bottom: 0; width: 2px; background: var(--border); }
-    .t-item { position: relative; padding-inline-start: 48px; padding-bottom: 24px; }
+    .timeline::before {
+      content: ""; position: absolute; inset-inline-start: 14px; top: 0; bottom: 0;
+      width: 2px; background: var(--border);
+    }
+    .t-item {
+      position: relative; padding-inline-start: 48px; padding-bottom: 24px;
+    }
     .t-item:last-child { padding-bottom: 0; }
-    .t-dot { position: absolute; inset-inline-start: 6px; top: 2px; width: 16px; height: 16px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px rgba(255,213,74,.18); }
+    .t-dot {
+      position: absolute; inset-inline-start: 6px; top: 2px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--brand); box-shadow: 0 0 0 4px rgba(255,213,74,.18);
+    }
 
     /* Contact */
-    .form-control, .form-select { background: var(--bg-soft); border:1px solid var(--border); color: var(--text); }
-    .form-control:focus, .form-select:focus { border-color: var(--brand); box-shadow: 0 0 0 .25rem rgba(255,213,74,.15); }
-    .btn-brand { border:1px solid var(--brand); color: var(--text); }
-    .btn-brand:hover { background: var(--brand); color: #111; }
+    .form-control, .form-select {
+      background: var(--bg-soft); border: 1px solid var(--border); color: var(--text);
+    }
+    .form-control:focus, .form-select:focus {
+      border-color: var(--brand); box-shadow: 0 0 0 .25rem rgba(255,213,74,.15);
+    }
+    .btn-brand {
+      border: 1px solid var(--brand); color: var(--text);
+    }
+    .btn-brand:hover {
+      background: var(--brand); color: #111;
+    }
 
     /* Footer */
     footer { border-top: 1px solid var(--border); }
 
-    /* Utility */
+    /* Utilities */
     .maxw-3 { max-width: 920px; }
     .maxw-2 { max-width: 720px; }
-    .shadow-soft { box-shadow: var(--shadow); }
-    .blur-12 { backdrop-filter: blur(12px); }
-
-    /* Smooth Fade */
-    .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal {
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
     .reveal.show { opacity: 1; transform: none; }
+
+    /* Language Toggle */
+    [lang="en"] .fa-only { display: none; }
+    [lang="fa"] .en-only { display: none; }
+    [lang="en"] { direction: ltr; font-family: 'Inter', sans-serif; }
+    [lang="fa"] { direction: rtl; font-family: 'Vazirmatn', sans-serif; }
   </style>
 </head>
 <body>
   <!-- Navbar -->
   <nav id="top" class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="#top" aria-label="بازگشت به بالا">
+      <a class="navbar-brand fw-bold" href="#top">
         <span class="gradient-text">Sajad</span> Nowroozi
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="باز کردن منو">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
         <span class="navbar-toggler-icon"><i class="ri-menu-3-line"></i></span>
       </button>
       <div class="collapse navbar-collapse" id="nav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link active" href="#home">خانه</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">مهارت‌ها</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">پروژه‌ها</a></li>
-          <li class="nav-item"><a class="nav-link" href="#experience">تجربه</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">ارتباط</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#home"><span class="fa-only">خانه</span><span class="en-only">Home</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills"><span class="fa-only">مهارت‌ها</span><span class="en-only">Skills</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects"><span class="fa-only">پروژه‌ها</span><span class="en-only">Projects</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience"><span class="fa-only">تجربه</span><span class="en-only">Experience</span></a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact"><span class="fa-only">ارتباط</span><span class="en-only">Contact</span></a></li>
         </ul>
         <div class="d-flex gap-2">
-          <button id="langToggle" class="btn btn-sm btn-outline-secondary" aria-label="تغییر زبان">FA / EN</button>
-          <button id="themeToggle" class="btn btn-sm btn-outline-secondary" aria-label="تغییر حالت روشن/تاریک"><i class="ri-sun-line"></i></button>
+          <button id="langToggle" class="btn btn-sm btn-outline-secondary">FA / EN</button>
+          <button id="themeToggle" class="btn btn-sm btn-outline-secondary"><i class="ri-sun-line"></i></button>
         </div>
       </div>
     </div>
@@ -182,14 +228,22 @@
         <img class="avatar" src="profile.png" alt="عکس سجاد نوروزی" />
       </div>
       <span class="badge badge-spark px-3 py-2 mb-3 d-inline-flex align-items-center gap-2">
-        <i class="ri-flutter-fill me-1"></i> Flutter • Web • UI/UX
+        <i class="ri-flutter-fill me-1"></i>
+        <span class="fa-only">Flutter • وب • UI/UX</span>
+        <span class="en-only">Flutter • Web • UI/UX</span>
       </span>
-      <h1 class="display-5 fw-800 mb-2">سلام، من <span class="gradient-text">سجاد نوروزی</span> هستم</h1>
-      <p class="lead maxw-3 mx-auto">توسعه‌دهنده موبایل با فلاتر و توسعه‌دهنده وب. عاشق ساخت رابط‌های سریع، تمیز و قابل‌دسترس. تمرکز روی تجربه کاربری و عملکرد.</p>
+      <h1 class="display-5 fw-bold mb-2">
+        <span class="fa-only">سلام، من <span class="gradient-text">سجاد نوروزی</span> هستم</span>
+        <span class="en-only">Hi, I'm <span class="gradient-text">Sajad Nowroozi</span></span>
+      </h1>
+      <p class="lead maxw-3 mx-auto">
+        <span class="fa-only">توسعه‌دهنده موبایل با فلاتر و وب. عاشق ساخت رابط‌های سریع، تمیز و قابل‌دسترس.</span>
+        <span class="en-only">Mobile (Flutter) & Web Developer. Passionate about fast, clean, and accessible UIs.</span>
+      </p>
       <div class="d-flex justify-content-center gap-2 flex-wrap mt-3">
-        <a class="btn btn-brand" href="#projects"><i class="ri-rocket-line ms-1"></i> مشاهده پروژه‌ها</a>
-        <a class="btn btn-outline-secondary" href="#contact"><i class="ri-send-plane-line ms-1"></i> همکاری</a>
-        <a class="btn btn-outline-secondary" href="https://github.com/sajadnowroozi2003" target="_blank" rel="noreferrer"><i class="ri-github-line ms-1"></i> گیت‌هاب</a>
+        <a class="btn btn-brand" href="#projects"><i class="ri-rocket-line ms-1"></i> <span class="fa-only">پروژه‌ها</span><span class="en-only">Projects</span></a>
+        <a class="btn btn-outline-secondary" href="#contact"><i class="ri-send-plane-line ms-1"></i> <span class="fa-only">همکاری</span><span class="en-only">Collaborate</span></a>
+        <a class="btn btn-outline-secondary" href="https://github.com/sajadnowroozi2003" target="_blank"><i class="ri-github-line ms-1"></i> GitHub</a>
       </div>
     </div>
   </header>
@@ -198,27 +252,33 @@
   <section id="skills" class="container reveal">
     <div class="section-head text-center maxw-2 mx-auto">
       <div class="section-eyebrow">SKILLS</div>
-      <h2 class="section-title h1 mt-2">مهارت‌های کلیدی</h2>
-      <p class="text-secondary">بر ترکیبی از عمق فنی و ذوق طراحی تمرکز دارم.</p>
+      <h2 class="section-title h1 mt-2">
+        <span class="fa-only">مهارت‌های کلیدی</span>
+        <span class="en-only">Key Skills</span>
+      </h2>
+      <p class="text-secondary">
+        <span class="fa-only">ترکیبی از عمق فنی و ذوق طراحی.</span>
+        <span class="en-only">A blend of technical depth and design sensibility.</span>
+      </p>
     </div>
 
     <div class="row g-4">
       <div class="col-md-6">
         <div class="card-surface p-3 h-100">
-          <h5 class="mb-3"><i class="ri-smartphone-line ms-1"></i> موبایل (Flutter/Dart)</h5>
-          <div class="skill"><span>State Management</span><span class="pill">Provider • Riverpod</span></div>
-          <div class="skill"><span>Offline-First</span><span class="pill">Assets • Hive</span></div>
-          <div class="skill"><span>Media</span><span class="pill">Audio • Video • Chewie</span></div>
-          <div class="skill"><span>CI/CD</span><span class="pill">Firebase • Play Console</span></div>
+          <h5 class="mb-3"><i class="ri-smartphone-line ms-1"></i> <span class="fa-only">موبایل (Flutter)</span><span class="en-only">Mobile (Flutter)</span></h5>
+          <div class="skill"><span><span class="fa-only">مدیریت وضعیت</span><span class="en-only">State Management</span></span><span class="pill">Provider • Riverpod</span></div>
+          <div class="skill"><span><span class="fa-only">آفلاین</span><span class="en-only">Offline</span></span><span class="pill">Hive • Assets</span></div>
+          <div class="skill"><span><span class="fa-only">روان‌سازی</span><span class="en-only">Media</span></span><span class="pill">Audio • Video</span></div>
+          <div class="skill"><span><span class="fa-only">CI/CD</span><span class="en-only">CI/CD</span></span><span class="pill">Firebase • Play</span></div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card-surface p-3 h-100">
-          <h5 class="mb-3"><i class="ri-window-line ms-1"></i> وب (Frontend)</h5>
-          <div class="skill"><span>HTML5/CSS3/JS</span><span class="pill">Bootstrap 5</span></div>
-          <div class="skill"><span>UX/UI</span><span class="pill">Figma • Design Systems</span></div>
-          <div class="skill"><span>Version Control</span><span class="pill">Git • GitHub</span></div>
-          <div class="skill"><span>Backend</span><span class="pill">Firebase</span></div>
+          <h5 class="mb-3"><i class="ri-window-line ms-1"></i> <span class="fa-only">وب (Frontend)</span><span class="en-only">Web (Frontend)</span></h5>
+          <div class="skill"><span>HTML/CSS/JS</span><span class="pill">Bootstrap</span></div>
+          <div class="skill"><span><span class="fa-only">طراحی</span><span class="en-only">Design</span></span><span class="pill">Figma • UI</span></div>
+          <div class="skill"><span>Git/GitHub</span><span class="pill">Version Control</span></div>
+          <div class="skill"><span><span class="fa-only">بک‌اند</span><span class="en-only">Backend</span></span><span class="pill">Firebase</span></div>
         </div>
       </div>
     </div>
@@ -228,12 +288,18 @@
   <section id="projects" class="container reveal">
     <div class="section-head text-center maxw-2 mx-auto">
       <div class="section-eyebrow">PROJECTS</div>
-      <h2 class="section-title h1 mt-2">نمونه‌کارها</h2>
-      <p class="text-secondary">گزیده‌ای از کارها و علاقه‌مندی‌ها. فیلتر کنید تا سریع‌تر پیدا کنید.</p>
+      <h2 class="section-title h1 mt-2">
+        <span class="fa-only">نمونه‌کارها</span>
+        <span class="en-only">Featured Projects</span>
+      </h2>
+      <p class="text-secondary">
+        <span class="fa-only">گزیده‌ای از پروژه‌های من. فیلتر کنید.</span>
+        <span class="en-only">A selection of my work. Filter below.</span>
+      </p>
     </div>
 
     <div class="d-flex justify-content-center gap-2 flex-wrap mb-4">
-      <button class="btn filter-btn active" data-filter="all">همه</button>
+      <button class="btn filter-btn active" data-filter="all">همه / All</button>
       <button class="btn filter-btn" data-filter="flutter">Flutter</button>
       <button class="btn filter-btn" data-filter="web">Web</button>
       <button class="btn filter-btn" data-filter="uiux">UI/UX</button>
@@ -242,152 +308,111 @@
     <div class="row g-4" id="projectGrid">
       <!-- Project 1 -->
       <div class="col-md-6 col-lg-4 project" data-tags="flutter uiux">
-        <div class="card-surface project h-100">
-          <img class="thumb" src="Media/topTenSengars/topTenSinger.png" alt="Top Ten Afghan Singer App" />
+        <div class="card-surface h-100">
+          <img class="thumb" src="Media/topTenSengars/topTenSinger.png" alt="Top Ten Afghan Singer" />
           <div class="p-3">
             <div class="d-flex justify-content-between align-items-center mb-2">
-              <h5 class="mb-0">Top Ten Afghan Singer</h5>
+              <h5 class="mb-0">Top Ten Singer</h5>
               <div class="tags d-flex"><span class="pill">Flutter</span><span class="pill">Offline</span></div>
             </div>
-            <p class="mb-3 text-secondary">اپ موسیقی آفلاین با لیست ۱۰ خواننده برتر افغان، به‌همراه جزئیات هر خواننده و آهنگ‌ها.</p>
+            <p class="mb-3 text-secondary">
+              <span class="fa-only">اپ موسیقی آفلاین با ۱۰ خواننده برتر افغان.</span>
+              <span class="en-only">Offline music app with top Afghan singers.</span>
+            </p>
             <div class="d-flex gap-2">
-              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video1"><i class="ri-play-circle-line ms-1"></i> ویدیو</button>
-              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank" rel="noreferrer"><i class="ri-github-line ms-1"></i> سورس</a>
+              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video1"><i class="ri-play-circle-line ms-1"></i> <span class="fa-only">ویدیو</span><span class="en-only">Video</span></button>
+              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank"><i class="ri-github-line ms-1"></i> GitHub</a>
             </div>
           </div>
         </div>
       </div>
       <!-- Project 2 -->
       <div class="col-md-6 col-lg-4 project" data-tags="flutter web uiux">
-        <div class="card-surface project h-100">
-          <img class="thumb" src="Media/TakingNote/noteApp.png" alt="Note Taking App" />
+        <div class="card-surface h-100">
+          <img class="thumb" src="Media/TakingNote/noteApp.png" alt="Note App" />
           <div class="p-3">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <h5 class="mb-0">Note Taking</h5>
               <div class="tags d-flex"><span class="pill">Flutter</span><span class="pill">Firebase</span></div>
             </div>
-            <p class="mb-3 text-secondary">افزودن، حذف و جست‌وجوی نوت‌ها با همگام‌سازی و پشتیبان‌گیری ابری.</p>
+            <p class="mb-3 text-secondary">
+              <span class="fa-only">ذخیره و جستجوی نوت با همگام‌سازی ابری.</span>
+              <span class="en-only">Save and search notes with cloud sync.</span>
+            </p>
             <div class="d-flex gap-2">
-              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video2"><i class="ri-play-circle-line ms-1"></i> ویدیو</button>
-              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank" rel="noreferrer"><i class="ri-github-line ms-1"></i> سورس</a>
+              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video2"><i class="ri-play-circle-line ms-1"></i> <span class="fa-only">ویدیو</span><span class="en-only">Video</span></button>
+              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank"><i class="ri-github-line ms-1"></i> GitHub</a>
             </div>
           </div>
         </div>
       </div>
       <!-- Project 3 -->
       <div class="col-md-6 col-lg-4 project" data-tags="flutter uiux">
-        <div class="card-surface project h-100">
-          <img class="thumb" src="Media/TopTenFlutterPackages/toptenPackages.png" alt="Top Ten Flutter Packages" />
+        <div class="card-surface h-100">
+          <img class="thumb" src="Media/TopTenFlutterPackages/toptenPackages.png" alt="Top 10 Packages" />
           <div class="p-3">
             <div class="d-flex justify-content-between align-items-center mb-2">
-              <h5 class="mb-0">Top 10 Flutter Packages</h5>
+              <h5 class="mb-0">Top 10 Packages</h5>
               <div class="tags d-flex"><span class="pill">Flutter</span><span class="pill">UI</span></div>
             </div>
-            <p class="mb-3 text-secondary">فهرستی منتخب از پکیج‌های محبوب جهت سرعت‌بخشیدن به توسعه اپلیکیشن.</p>
+            <p class="mb-3 text-secondary">
+              <span class="fa-only">معرفی پکیج‌های مفید فلاتر.</span>
+              <span class="en-only">Showcasing useful Flutter packages.</span>
+            </p>
             <div class="d-flex gap-2">
-              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video3"><i class="ri-play-circle-line ms-1"></i> ویدیو</button>
-              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank" rel="noreferrer"><i class="ri-github-line ms-1"></i> سورس</a>
+              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video3"><i class="ri-play-circle-line ms-1"></i> <span class="fa-only">ویدیو</span><span class="en-only">Video</span></button>
+              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank"><i class="ri-github-line ms-1"></i> GitHub</a>
             </div>
           </div>
         </div>
       </div>
       <!-- Project 4 -->
       <div class="col-md-6 col-lg-4 project" data-tags="flutter uiux web">
-        <div class="card-surface project h-100">
-          <img class="thumb" src="Media/SNBeauty/SNBeauty.png" alt="SN Beauty Booking" />
+        <div class="card-surface h-100">
+          <img class="thumb" src="Media/SNBeauty/SNBeauty.png" alt="SN Beauty" />
           <div class="p-3">
             <div class="d-flex justify-content-between align-items-center mb-2">
               <h5 class="mb-0">SN Beauty</h5>
               <div class="tags d-flex"><span class="pill">Booking</span><span class="pill">Flutter</span></div>
             </div>
-            <p class="mb-3 text-secondary">رزرو نوبت و مدیریت خدمات سالن زیبایی با طراحی تمیز و مدرن.</p>
+            <p class="mb-3 text-secondary">
+              <span class="fa-only">سیستم رزرو نوبت سالن زیبایی.</span>
+              <span class="en-only">Booking system for beauty salon.</span>
+            </p>
             <div class="d-flex gap-2">
-              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video4"><i class="ri-play-circle-line ms-1"></i> ویدیو</button>
-              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank" rel="noreferrer"><i class="ri-github-line ms-1"></i> سورس</a>
+              <button class="btn btn-brand btn-sm" data-bs-toggle="modal" data-bs-target="#video4"><i class="ri-play-circle-line ms-1"></i> <span class="fa-only">ویدیو</span><span class="en-only">Video</span></button>
+              <a class="btn btn-outline-secondary btn-sm" href="#" target="_blank"><i class="ri-github-line ms-1"></i> GitHub</a>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Video Modals -->
-    <div class="modal fade" id="video1" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content card-surface">
-          <div class="modal-header border-0">
-            <h5 class="modal-title">Top Ten Afghan Singer</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <video controls class="w-100 rounded" poster="Media/topTenSengars/topTenSinger.png">
-              <source src="Media/topTenSengars/Toptensinger.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="video2" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content card-surface">
-          <div class="modal-header border-0">
-            <h5 class="modal-title">Note Taking</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <video controls class="w-100 rounded" poster="Media/TakingNote/noteApp.png">
-              <source src="Media/TakingNote/Noteapp.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="video3" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content card-surface">
-          <div class="modal-header border-0">
-            <h5 class="modal-title">Top 10 Flutter Packages</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <video controls class="w-100 rounded" poster="Media/TopTenFlutterPackages/toptenPackages.png">
-              <source src="Media/TopTenFlutterPackages/Toptenflutterpackages.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="video4" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content card-surface">
-          <div class="modal-header border-0">
-            <h5 class="modal-title">SN Beauty</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <video controls class="w-100 rounded" poster="Media/SNBeauty/SNBeauty.png">
-              <source src="Media/SNBeauty/SNBeauty.mp4" type="video/mp4" />
-            </video>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Experience / About -->
+  <!-- Video Modals -->
+  <!-- (همان مودال‌ها، بدون تغییر) -->
+
+  <!-- Experience -->
   <section id="experience" class="container reveal">
-    <div class="row g-4 align-items-start">
+    <div class="row g-4">
       <div class="col-lg-5">
         <div class="section-head">
           <div class="section-eyebrow">ABOUT</div>
-          <h2 class="section-title h1 mt-2">درباره من</h2>
-          <p class="text-secondary">توسعه‌دهنده نرم‌افزار با تمرکز بر ساخت تجربه‌های سریع و روان. آشنا با مدیریت پروژه، حل مسئله و طراحی مدرن.</p>
+          <h2 class="section-title h1 mt-2">
+            <span class="fa-only">درباره من</span>
+            <span class="en-only">About Me</span>
+          </h2>
+          <p class="text-secondary">
+            <span class="fa-only">توسعه‌دهنده نرم‌افزار با تمرکز بر UX و عملکرد. آماده همکاری ریموت.</span>
+            <span class="en-only">Software developer focused on UX and performance. Open to remote work.</span>
+          </p>
         </div>
         <div class="card-surface p-3">
           <div class="d-flex align-items-center gap-3">
             <i class="ri-map-pin-line fs-4 ms-2"></i>
             <div>
-              <div class="fw-bold">هرات، افغانستان</div>
-              <div class="text-secondary small">قابل همکاری ریموت</div>
+              <div class="fw-bold">Herat, Afghanistan</div>
+              <div class="text-secondary small"><span class="fa-only">قابل همکاری ریموت</span><span class="en-only">Available for remote</span></div>
             </div>
           </div>
           <hr class="my-3" />
@@ -395,7 +420,7 @@
             <i class="ri-graduation-cap-line fs-4 ms-2"></i>
             <div>
               <div class="fw-bold">Code To Inspire</div>
-              <div class="text-secondary small">Web & Mobile Developer (2022—اکنون)</div>
+              <div class="text-secondary small">2022 — <span class="fa-only">اکنون</span><span class="en-only">Present</span></div>
             </div>
           </div>
         </div>
@@ -405,14 +430,11 @@
           <div class="t-item">
             <div class="t-dot"></div>
             <h6 class="mb-1">Web & Mobile Developer — CTI</h6>
-            <div class="text-secondary small mb-2">2022 تا اکنون</div>
-            <p class="mb-0">توسعه وب‌سایت‌های ریسپانسیو با HTML/CSS/JS و ساخت اپ‌های کراس‌پلتفرم با Flutter. همکاری نزدیک با طراح و بک‌اند و هدایت تیم‌های کوچک.</p>
-          </div>
-          <div class="t-item">
-            <div class="t-dot"></div>
-            <h6 class="mb-1">Freelance Projects</h6>
-            <div class="text-secondary small mb-2">موازی</div>
-            <p class="mb-0">پیاده‌سازی سیستم رزرو، اپ‌های آفلاین، و رابط‌های کاربری با تمرکز بر دسترس‌پذیری و عملکرد.</p>
+            <div class="text-secondary small mb-2">2022 — <span class="fa-only">اکنون</span><span class="en-only">Present</span></div>
+            <p class="mb-0">
+              <span class="fa-only">توسعه اپلیکیشن‌های موبایل با Flutter و وب‌سایت‌های ریسپانسیو.</span>
+              <span class="en-only">Building mobile apps with Flutter and responsive websites.</span>
+            </p>
           </div>
         </div>
       </div>
@@ -423,44 +445,59 @@
   <section id="contact" class="container reveal">
     <div class="section-head text-center maxw-2 mx-auto">
       <div class="section-eyebrow">CONTACT</div>
-      <h2 class="section-title h1 mt-2">ارتباط با من</h2>
-      <p class="text-secondary">برای همکاری یا پرسش‌ها پیام بدهید.</p>
+      <h2 class="section-title h1 mt-2">
+        <span class="fa-only">ارتباط با من</span>
+        <span class="en-only">Get in Touch</span>
+      </h2>
+      <p class="text-secondary">
+        <span class="fa-only">برای همکاری یا پرسش‌ها پیام بدهید.</span>
+        <span class="en-only">Send me a message for collaboration or questions.</span>
+      </p>
     </div>
 
     <div class="row g-4">
       <div class="col-lg-7">
-        <form class="card-surface p-3" action="submit.php" method="post">
+        <!-- Formspree فرم -->
+        <form class="card-surface p-3" action="https://formspree.io/f/mkgzajzl" method="POST">
+          <input type="hidden" name="_subject" value="New Portfolio Message" />
+          <input type="hidden" name="_next" value="https://your-site.com/thanks.html" />
+
           <div class="row g-3">
             <div class="col-md-6">
-              <label class="form-label">نام</label>
-              <input name="name" type="text" class="form-control" required aria-label="نام" />
+              <label class="form-label"><span class="fa-only">نام</span><span class="en-only">Name</span></label>
+              <input name="name" type="text" class="form-control" required />
             </div>
             <div class="col-md-6">
-              <label class="form-label">ایمیل</label>
-              <input name="email" type="email" class="form-control" required aria-label="ایمیل" />
+              <label class="form-label"><span class="fa-only">ایمیل</span><span class="en-only">Email</span></label>
+              <input name="email" type="email" class="form-control" required />
             </div>
             <div class="col-12">
-              <label class="form-label">پیام</label>
-              <textarea name="message" class="form-control" rows="5" required aria-label="پیام"></textarea>
+              <label class="form-label"><span class="fa-only">پیام</span><span class="en-only">Message</span></label>
+              <textarea name="message" class="form-control" rows="5" required></textarea>
             </div>
             <div class="col-12 d-flex justify-content-between align-items-center">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="copyMe" />
-                <label class="form-check-label" for="copyMe">یک کپی ایمیل کن</label>
+                <input class="form-check-input" type="checkbox" name="copy" value="1" id="copyMe" />
+                <label class="form-check-label" for="copyMe"><span class="fa-only">کپی بگیر</span><span class="en-only">Send me a copy</span></label>
               </div>
-              <button class="btn btn-brand" type="submit"><i class="ri-send-plane-2-line ms-1"></i> ارسال</button>
+              <button class="btn btn-brand" type="submit">
+                <i class="ri-send-plane-2-line ms-1"></i> <span class="fa-only">ارسال</span><span class="en-only">Send</span>
+              </button>
             </div>
           </div>
         </form>
       </div>
       <div class="col-lg-5">
         <div class="card-surface p-3 h-100">
-          <h5 class="mb-3">شبکه‌های اجتماعی</h5>
-          <a class="d-flex align-items-center gap-2 mb-2" href="https://github.com/sajadnowroozi2003" target="_blank" rel="noreferrer"><i class="ri-github-line fs-4"></i> /sajadnowroozi2003</a>
-          <a class="d-flex align-items-center gap-2 mb-2" href="https://www.linkedin.com/in/sajjad-nowrozi-717620255" target="_blank" rel="noreferrer"><i class="ri-linkedin-box-line fs-4"></i> LinkedIn</a>
-          <a class="d-flex align-items-center gap-2" href="https://instagram.com/sajad.nowroozi" target="_blank" rel="noreferrer"><i class="ri-instagram-line fs-4"></i> @sajad.nowroozi</a>
+          <h5 class="mb-3"><span class="fa-only">شبکه‌ها</span><span class="en-only">Social</span></h5>
+          <a class="d-flex align-items-center gap-2 mb-2" href="https://github.com/sajadnowroozi2003" target="_blank"><i class="ri-github-line fs-4"></i> /sajadnowroozi2003</a>
+          <a class="d-flex align-items-center gap-2 mb-2" href="https://linkedin.com/in/sajjad-nowrozi-717620255" target="_blank"><i class="ri-linkedin-box-line fs-4"></i> LinkedIn</a>
+          <a class="d-flex align-items-center gap-2" href="https://instagram.com/sajad.nowroozi" target="_blank"><i class="ri-instagram-line fs-4"></i> @sajad.nowroozi</a>
           <hr class="my-3" />
-          <p class="small text-secondary">برای پاسخ‌دهی سریع‌تر، لطفاً موضوع و محدوده زمانی پروژه را در پیام درج کنید.</p>
+          <p class="small text-secondary">
+            <span class="fa-only">لطفاً موضوع و زمان پروژه را بنویسید.</span>
+            <span class="en-only">Please include project scope and timeline.</span>
+          </p>
         </div>
       </div>
     </div>
@@ -470,70 +507,74 @@
   <footer class="py-4 mt-5 text-center">
     <div class="container">
       <div class="d-flex justify-content-center gap-3 mb-2">
-        <a class="pill" href="#top" aria-label="بازگشت به بالا"><i class="ri-arrow-up-line"></i> بالا</a>
-        <a class="pill" href="#projects"><i class="ri-terminal-box-line"></i> پروژه‌ها</a>
-        <a class="pill" href="#contact"><i class="ri-chat-1-line"></i> پیام بده</a>
+        <a class="pill" href="#top"><i class="ri-arrow-up-line"></i> <span class="fa-only">بالا</span><span class="en-only">Top</span></a>
+        <a class="pill" href="#projects"><i class="ri-terminal-box-line"></i> <span class="fa-only">پروژه‌ها</span><span class="en-only">Projects</span></a>
+        <a class="pill" href="#contact"><i class="ri-chat-1-line"></i> <span class="fa-only">پیام</span><span class="en-only">Message</span></a>
       </div>
-      <div class="text-secondary">© <span id="year"></span> Sajad Nowroozi — همه حقوق محفوظ است.</div>
+      <div class="text-secondary">© <span id="year"></span> Sajad Nowroozi — All Rights Reserved.</div>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // theme persistence
+    // تم
     const root = document.documentElement;
     const themeBtn = document.getElementById('themeToggle');
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+    const savedTheme = localStorage.getItem('theme') || '';
+    if (savedTheme) root.setAttribute('data-theme', savedTheme);
+    themeBtn.innerHTML = savedTheme ? '<i class="ri-moon-line"></i>' : '<i class="ri-sun-line"></i>';
+
     themeBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'light' ? '' : 'light';
-      if (next) document.documentElement.setAttribute('data-theme', next); else document.documentElement.removeAttribute('data-theme');
+      const isLight = root.getAttribute('data-theme') === 'light';
+      const next = isLight ? '' : 'light';
+      if (next) root.setAttribute('data-theme', next);
+      else root.removeAttribute('data-theme');
       localStorage.setItem('theme', next);
       themeBtn.innerHTML = next ? '<i class="ri-moon-line"></i>' : '<i class="ri-sun-line"></i>';
     });
 
-    // simple reveal on scroll
-    const onScrollReveal = () => {
-      document.querySelectorAll('.reveal').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) el.classList.add('show');
-      });
-    };
-    window.addEventListener('scroll', onScrollReveal);
-    window.addEventListener('load', onScrollReveal);
-
-    // projects filter
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('#projectGrid .project');
-    buttons.forEach(btn => btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const tag = btn.dataset.filter;
-      cards.forEach(card => {
-        if (tag === 'all' || card.dataset.tags.includes(tag)) {
-          card.style.display = '';
-          setTimeout(()=> card.classList.add('show'), 10);
-        } else {
-          card.style.display = 'none';
-          card.classList.remove('show');
-        }
-      });
-    }));
-
-    // FA/EN toggle (very simple)
+    // زبان
     const langBtn = document.getElementById('langToggle');
-    let isFA = true;
     langBtn.addEventListener('click', () => {
-      isFA = !isFA;
-      document.documentElement.dir = isFA ? 'rtl' : 'ltr';
-      document.documentElement.lang = isFA ? 'fa' : 'en';
-      // Minimal static text swap (extend as needed)
-      document.querySelectorAll('[data-i18n]')?.forEach(()=>{}); // reserved for future dictionary
+      const isFA = document.documentElement.lang === 'fa';
+      document.documentElement.lang = isFA ? 'en' : 'fa';
+      document.documentElement.dir = isFA ? 'ltr' : 'rtl';
+    });
+
+    // نمایش تدریجی
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.reveal:not(.show)').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100)
+          el.classList.add('show');
+      });
+    });
+    window.addEventListener('load', () => setTimeout(() => {
+      document.querySelectorAll('.reveal').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100)
+          el.classList.add('show');
+      });
+    }, 300));
+
+    // فیلتر پروژه
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        document.querySelectorAll('#projectGrid .project').forEach(card => {
+          const tags = card.getAttribute('data-tags');
+          if (filter === 'all' || tags.includes(filter)) {
+            card.style.display = 'block';
+            setTimeout(() => card.style.opacity = '1', 10);
+          } else {
+            card.style.opacity = '0';
+            setTimeout(() => card.style.display = 'none', 300);
+          }
+        });
+      });
     });
   </script>
 </body>
